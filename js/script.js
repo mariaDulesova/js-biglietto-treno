@@ -7,10 +7,33 @@
 
 // Chiedere il numero di km da percorrere
 var numeroKm = parseInt(prompt("Quanti km sono da percorrere?"));
-console.log(numeroKm);
 document.getElementById("distance").innerHTML = numeroKm;
 
-//Chiedere l'eta' del passeggero
+//Chiedere l'eta' del passegero
 var etaPassegero = parseInt(prompt("Eta' del passegero?"));
-console.log(etaPassegero)
 document.getElementById("age").innerHTML = etaPassegero;
+
+//Prezzo del biglietot base
+var prezzoKm = 0.21;
+var prezzoBaseBiglietto = prezzoKm * numeroKm;
+console.log(prezzoBaseBiglietto);
+
+//Applicazione parametri di sconto
+var prezzoScontato
+
+if(etaPassegero < 18) {
+    prezzoScontato = prezzoBaseBiglietto * (1 - 0.2);
+    console.log(prezzoScontato);
+} else if(etaPassegero > 65) {
+    prezzoScontato = prezzoBaseBiglietto * (1 - 0.4);
+    console.log(prezzoScontato);
+} else {
+    prezzoScontato = prezzoBaseBiglietto;
+    console.log(prezzoScontato);
+}
+
+//Arrotondamento prezzo
+var prezzoFinale = prezzoScontato.toFixed(2);
+
+//Prezzo finale in pagina
+document.getElementById("price").innerHTML = prezzoFinale;
